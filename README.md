@@ -14,5 +14,5 @@ At a minimum requires node.js and npm to run with npm start. Any IDE that suppor
 
 Web page with basic sign up form for creating an account.
 
-No external dependencies required to open in any browser.
+No external dependencies required to open in any browser. Ensure styles.css and scripts.js are in same directory and open Registration.html in browser. 
 
