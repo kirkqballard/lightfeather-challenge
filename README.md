@@ -10,6 +10,8 @@ If request is successful, encoded message is also saved to json file 'encodedMes
 
 At a minimum requires node.js and npm to run with npm start. Any IDE that supports launching web services will also work.
 
+Once running, post json to http://localhost:23456/api/encode.
+
 # SignUpForm
 
 Web page with basic sign up form for creating an account.
