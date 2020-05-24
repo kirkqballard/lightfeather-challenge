@@ -17,9 +17,12 @@ app.get('/', (req, res) => {
  */
 app.post('/api/encode', (req, res) => {
 
+    var returnJson = {
+        'EncodedMessage': ''
+    }
     const { err } = validate(req.body);
     if (err) {
-        res.status(500).send(err.details[0].message)
+        res.status(500).send(returnJson) // Could send err.details[0].message instead
         return;
     }
 
@@ -28,18 +31,19 @@ app.post('/api/encode', (req, res) => {
 
     // Encode meassage and add to the json
     const encodedMessage = shiftEncode(messageJson);
-    messageJson["EncodedMessage"] = encodedMessage;
+    messageJson['EncodedMessage'] = encodedMessage;
 
     // Persist the json to the file system
     fs.writeFile('encodedMessage.json', JSON.stringify(messageJson), function (err) {
         if (err) {
-            res.status(500).send(err.message)
+            res.status(500).send(returnJson) // Could send err.message instead
             return;
         }
         console.log('Encoded message saved to file encodedMessage.json.');
     });
- 
-    res.send(encodedMessage);
+
+    returnJson['EncodedMessage'] = encodedMessage;
+    res.status(200).send(returnJson);
 });
 
 /*
@@ -48,7 +52,7 @@ app.post('/api/encode', (req, res) => {
 function validate(shiftMessage) {
     const schema = {
         Shift: Joi.number().greater(-1).less(27).required(),
-        Message: Joi.string().regex(new RegExp('/^[A-Za-z\-\s]+$/')).required()
+        Message: Joi.string().regex(new RegExp("/[^A-Za-z\-\s]+$/")).required()
     };
 
     return Joi.validate(shiftMessage, schema);

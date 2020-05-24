@@ -1,8 +1,8 @@
 {
-  "name": "nodejs-web-app",
+  "name": "shift-encode-service",
   "version": "0.0.0",
-  "description": "NodejsWebApp",
-  "main": "server.js",
+  "description": "ShiftEncodeService",
+  "main": "shiftEncodeService.js",
   "author": {
     "name": "Kirk Ballard"
   },

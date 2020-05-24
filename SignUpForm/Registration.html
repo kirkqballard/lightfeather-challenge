@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registration Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" type="text/css"/-->
+  <link rel="stylesheet" href="styles.css" type="text/css"/>
+  <script src="scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script-->
+</head>
+
+<body>
+  <div class="container">
+    <form style="margin:auto;width:300px">
+        <h2>Sign up for an account</h2>
+        <div class="formspacer">
+          <label for="inUserName">User Name:</label>
+          <input type="text" class="inputbox" id="inUserName" onchange="enableDisableSignUp()" maxlength="15" onkeyup="alertUserName()" autofocus>
+	    </div>
+        <div class="formspacer">
+          <label for="inEmail">Email:</label>
+          <input type="email" class="inputbox" id="inEmail" onchange="enableDisableSignUp()" onfocusout="validateEmail()">
+        </div>
+        <div class="formspacer">
+          <label for="inPassword">Password:</label>
+          <input type="password" class="inputbox" id="inPassword" onchange="enableDisableSignUp()">
+        </div>
+        <div class="formspacer">
+          <label for="inConfirmPassword">Confirm Password:</label>
+          <input type="password" class="inputbox" id="inConfirmPassword" onchange="enableDisableSignUp()" onfocusout="confirmPassword()">
+        </div>
+        <div class="formspacer">
+          <button id="signUp" type="submit" class="button" disabled="disabled">Sign up</button>
+		</div>
+    </form>
+  </div>
+</body>
+</html>
