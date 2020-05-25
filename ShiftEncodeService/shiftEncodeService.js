@@ -22,7 +22,7 @@ app.post('/api/encode', (req, res) => {
     }
     const err = validate(req.body);
     if (err) {
-        res.status(500).send(returnJson) // Could send err.details[0].message instead
+        res.status(500).send(returnJson) // Could send err instead
         return;
     }
 
