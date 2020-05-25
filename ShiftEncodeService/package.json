@@ -9,5 +9,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "joi": "^13.7.0"
+  },
+  "scripts": {
+    "start": "node shiftEncodeService.js"
   }
 }

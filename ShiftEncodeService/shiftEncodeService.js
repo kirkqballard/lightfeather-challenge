@@ -20,7 +20,7 @@ app.post('/api/encode', (req, res) => {
     var returnJson = {
         'EncodedMessage': ''
     }
-    const { err } = validate(req.body);
+    const err = validate(req.body);
     if (err) {
         res.status(500).send(returnJson) // Could send err.details[0].message instead
         return;
@@ -50,12 +50,21 @@ app.post('/api/encode', (req, res) => {
  * Validate shift and message values are in appropriate ranges
  */
 function validate(shiftMessage) {
+
     const schema = {
-        Shift: Joi.number().greater(-1).less(27).required(),
-        Message: Joi.string().regex(new RegExp("/[^A-Za-z\-\s]+$/")).required()
+        Shift: Joi.number().greater(0).less(27).required(),
+        Message: Joi.string().required()
     };
 
-    return Joi.validate(shiftMessage, schema);
+    const err = Joi.validate(shiftMessage, schema);
+    if (err.error) {
+        return { 'Error': err.error.details[0].message };
+    }
+ 
+    // Joi regex doesn't seem to work, so we'll check for bad characters ourselves
+    if (/[^A-Za-z\-\s]/.test(shiftMessage['Message'])) {
+        return { 'Error': 'Unsuppoprted characters in message' };
+    }
 }
 
 /*
@@ -77,4 +86,4 @@ function shiftEncode(shiftMessage) {
 
 // Set the port and start listening
 const port = process.env.PORT || 23456;
-app.listen(port, () => console.log('Listening on port ${port}..'));
+app.listen(port, () => console.log("Listening on port %d...", port));
