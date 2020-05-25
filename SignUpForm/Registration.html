@@ -17,7 +17,7 @@
         <h2>Sign up for an account</h2>
         <div class="formspacer">
           <label for="inUserName">User Name:</label>
-          <input type="text" class="inputbox" id="inUserName" onchange="enableDisableSignUp()" maxlength="15" onkeyup="alertUserName()" autofocus>
+          <input type="text" class="inputbox" id="inUserName" onchange="enableDisableSignUp()" maxlength="15" autofocus>
 	    </div>
         <div class="formspacer">
           <label for="inEmail">Email:</label>
@@ -38,5 +38,12 @@
 		</div>
     </form>
   </div>
+  <script>
+    document.getElementById("inUserName").addEventListener("keydown", function(event){
+      if (event.key.length == 1 && document.getElementById("inUserName").value.length == 15) {
+        alert('User name has max 15 characters.');
+      }
+    });
+  </script>
 </body>
 </html>

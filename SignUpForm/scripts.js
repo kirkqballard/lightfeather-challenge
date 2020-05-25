@@ -16,13 +16,6 @@ function enableDisableSignUp() {
   }
 }
 
-function alertUserName() {
-
-  if (document.getElementById('inUserName').value.length == 15) {
-    alert('User name has max 15 characters.');
-  }
-}
-
 function validateEmail() {
 
   var email = document.getElementById('inEmail');
@@ -34,10 +27,7 @@ function validateEmail() {
   var badEmail = !pattern.test(email.value);
   if (email.value != '' && badEmail) { // Not an error if input is empty
 	if (emailErr == null) {
-      emailErr = document.createElement('p');
-	  emailErr.setAttribute("id", "emailError");
-	  emailErr.setAttribute("style", "color:red;font-style:bold");
-	  emailErr.innerHTML = 'Error: invalid email address!';
+      emailErr = createErrorElement("emailError", "Invalid email address!");
 	  email.parentNode.appendChild(emailErr);
 	}
 	else {
@@ -60,10 +50,7 @@ function confirmPassword() {
   var pwdErr = document.getElementById('passwordError');
   if (confPwd.value != '' && confPwd.value != document.getElementById('inPassword').value) { // Not an error if input is empty
 	if (pwdErr == null) {
-      pwdErr = document.createElement('p');
-	  pwdErr.setAttribute("id", "passwordError");
-	  pwdErr.setAttribute("style", "color:red;font-style:bold");
-	  pwdErr.innerHTML = 'Error: passwords do not match!';
+      pwdErr = createErrorElement("passwordError", "Passwords do not match!");
 	  confPwd.parentNode.appendChild(pwdErr);
 	}
 	else {
@@ -78,6 +65,15 @@ function confirmPassword() {
   }
   
   return true;
+}
+
+function createErrorElement(id, message) {
+
+  var errElement = document.createElement('p');
+  errElement.setAttribute("id", id);
+  errElement.setAttribute("style", "color:red;font-style:bold");
+  errElement.innerHTML = 'Error: ' + message;
+  return errElement;
 }
 
 function showPassword(element) {
