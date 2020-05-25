@@ -1,2 +1,0 @@
-C:\dev\dotnet\solutions\NodejsWebApp\bin\Microsoft.NodejsTools.WebRole.dll
-C:\dev\dotnet\solutions\NodejsWebApp\obj\Debug\ShiftEncodeService.njsprojAssemblyReference.cache
