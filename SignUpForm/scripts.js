@@ -79,3 +79,17 @@ function confirmPassword() {
   
   return true;
 }
+
+function showPassword(element) {
+
+ if (element.type === "password") {
+    element.type = "text";
+  } else {
+    element.type = "password";
+  }
+}
+
+function thankYou(userName) {
+
+  alert("Thank you for signing up " + userName.value + "!");
+}

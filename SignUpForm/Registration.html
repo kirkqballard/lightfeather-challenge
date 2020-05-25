@@ -13,7 +13,7 @@
 
 <body>
   <div class="container">
-    <form style="margin:auto;width:300px">
+    <form style="margin:auto;width:300px" onSubmit="JavaScript:thankYou(inUserName)">
         <h2>Sign up for an account</h2>
         <div class="formspacer">
           <label for="inUserName">User Name:</label>
@@ -26,10 +26,12 @@
         <div class="formspacer">
           <label for="inPassword">Password:</label>
           <input type="password" class="inputbox" id="inPassword" onchange="enableDisableSignUp()">
+		  <input type="checkbox" onclick="showPassword(inPassword)">Show Password
         </div>
         <div class="formspacer">
           <label for="inConfirmPassword">Confirm Password:</label>
           <input type="password" class="inputbox" id="inConfirmPassword" onchange="enableDisableSignUp()" onfocusout="confirmPassword()">
+		  <input type="checkbox" onclick="showPassword(inConfirmPassword)">Show Password
         </div>
         <div class="formspacer">
           <button id="signUp" type="submit" class="button" disabled="disabled">Sign up</button>
